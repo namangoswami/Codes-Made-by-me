@@ -1,14 +1,5 @@
 #include<stdio.h>
 
-void copyString(char str[], char str2[])
-{
-    int n=0;
-    for(int i=0;str[i]!='\0';i++, n++)
-    {
-        str2[i]=str[i];
-    }
-    str2[n]='\0';
-}
 
 int stringLength(char str[])
 {
@@ -18,22 +9,14 @@ int stringLength(char str[])
     }
     return n;
 }
-void reverseString(char str[], char str2[])
+int checkPalindrome(char str[])
 {
-    copyString(str, str2);
-    int n=stringLength(str)-1;
-    for(int i=0 ;str[i]!='\0';i++, n--)
-    {
-        str2[n]=str[i];
-    }
-}
-int checkPalindrome(char str[], char str2[])
-{
-    reverseString(str, str2);
+
     int res=1;
-    for(int i=0 ;str[i]!='\0';i++)
+    int len=stringLength(str);
+    for(int i=0, n= len-1;i<=len/2;i++, n--)
     {
-        if(str[i]!=str2[i])
+        if(str[i]!=str[n])
         {
             res=0;
             break;
@@ -44,10 +27,10 @@ int checkPalindrome(char str[], char str2[])
 
 int main()
 {
-    char str[400], str2[400];
+    char str[400];
     printf("Enter String\n");
     scanf("%s", &str);
-    printf("%s",checkPalindrome(str, str2)?"The String is Palindrome":"The String is not Palindrome");
+    printf("%s",checkPalindrome(str)?"The String is Palindrome":"The String is not Palindrome");
    return 0;
 
 }
